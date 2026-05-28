@@ -1,0 +1,243 @@
+/* --- 蓝白主题变量 --- */
+:root {
+    --arcade-blue: #1e6fd9;
+    --arcade-blue-dark: #1557b0;
+    --arcade-blue-light: #e8f2ff;
+    --arcade-blue-muted: #5a9ae8;
+    --arcade-bg: #f4f8fc;
+    --arcade-white: #ffffff;
+    --arcade-text: #1a2b42;
+    --arcade-text-muted: #6b7c93;
+    --arcade-border: #d4e4f7;
+    --arcade-shadow: rgba(30, 111, 217, 0.08);
+    --arcade-radius: 12px;
+}
+
+/* --- 全局 --- */
+body {
+    background-color: var(--arcade-bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--arcade-text);
+}
+
+/* --- 蓝白导航栏 --- */
+.navbar-arcade {
+    background: linear-gradient(135deg, var(--arcade-blue) 0%, var(--arcade-blue-dark) 100%);
+    padding: 0.6rem 0;
+    box-shadow: 0 2px 12px var(--arcade-shadow);
+}
+
+.navbar-arcade .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 1.2rem;
+    color: #fff !important;
+}
+
+.navbar-arcade .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 0.45rem 1rem !important;
+    border-radius: 8px;
+    margin: 0 2px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar-arcade .nav-link:hover,
+.navbar-arcade .nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.navbar-arcade .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-arcade .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* --- 页脚 --- */
+.footer-arcade {
+    background: var(--arcade-white);
+    border-top: 1px solid var(--arcade-border);
+    color: var(--arcade-text-muted);
+}
+
+/* --- 首页 --- */
+.page-hero {
+    padding: 1.5rem 0 2rem;
+}
+
+.page-hero h1 {
+    color: var(--arcade-text);
+    font-weight: 700;
+}
+
+.page-hero .lead {
+    color: var(--arcade-text-muted);
+}
+
+.game-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid var(--arcade-border) !important;
+    border-radius: var(--arcade-radius);
+    background-color: var(--arcade-white);
+    overflow: hidden;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px var(--arcade-shadow) !important;
+    border-color: var(--arcade-blue-muted) !important;
+}
+
+.game-card .card-title {
+    font-size: 1.2rem;
+}
+
+/* --- 游戏页布局 --- */
+.game-page-header {
+    max-width: 900px;
+    margin: 0 auto 1.25rem;
+}
+
+.game-page-header h2 {
+    color: var(--arcade-text);
+    font-size: 1.5rem;
+}
+
+.game-layout {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.canvas-container {
+    background-color: var(--arcade-white);
+    border-radius: var(--arcade-radius);
+    padding: 14px;
+    display: inline-block;
+    border: 1px solid var(--arcade-border);
+    box-shadow: 0 6px 20px var(--arcade-shadow);
+    vertical-align: top;
+}
+
+canvas {
+    display: block;
+    border-radius: 8px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* --- 操作提示面板 --- */
+.game-hint-panel {
+    background: var(--arcade-white);
+    border: 1px solid var(--arcade-border);
+    border-radius: var(--arcade-radius);
+    padding: 1.25rem 1.35rem;
+    min-width: 220px;
+    max-width: 260px;
+    box-shadow: 0 4px 16px var(--arcade-shadow);
+    text-align: left;
+}
+
+.game-hint-panel h6 {
+    color: var(--arcade-blue);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.game-hint-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--arcade-text-muted);
+    line-height: 1.7;
+}
+
+.game-hint-panel li {
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+}
+
+.game-hint-panel li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--arcade-blue-muted);
+    font-weight: bold;
+}
+
+.game-hint-panel .hint-goal {
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--arcade-border);
+    font-size: 0.82rem;
+    color: var(--arcade-text-muted);
+}
+
+.game-hint-panel .hint-record {
+    margin-top: 0.75rem;
+    padding: 0.5rem 0.65rem;
+    background: var(--arcade-blue-light);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--arcade-blue-dark);
+    font-weight: 600;
+}
+
+/* --- 按钮 --- */
+.btn-arcade {
+    background: var(--arcade-blue);
+    border-color: var(--arcade-blue);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-arcade:hover {
+    background: var(--arcade-blue-dark);
+    border-color: var(--arcade-blue-dark);
+    color: #fff;
+}
+
+.btn-outline-arcade {
+    color: var(--arcade-blue);
+    border-color: var(--arcade-blue);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-outline-arcade:hover {
+    background: var(--arcade-blue-light);
+    color: var(--arcade-blue-dark);
+    border-color: var(--arcade-blue);
+}
+
+/* --- 键盘提示 --- */
+kbd {
+    background: var(--arcade-blue-light);
+    color: var(--arcade-blue-dark);
+    font-size: 0.8em;
+    border-radius: 4px;
+    padding: 2px 6px;
+    border: 1px solid var(--arcade-border);
+    box-shadow: none;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .game-hint-panel {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+}

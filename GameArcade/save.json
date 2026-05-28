@@ -1,0 +1,14 @@
+{
+    "game_2048": {
+        "best_score": 2188
+    },
+    "tetris": {
+        "best_score": 800
+    },
+    "snake": {
+        "best_score": 70
+    },
+    "minesweeper": {
+        "best_time": 71
+    }
+}

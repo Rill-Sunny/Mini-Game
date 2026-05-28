@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="game-page-header d-flex justify-content-between align-items-center px-2">
+        <h2 class="fw-bold m-0">绿茵贪吃蛇</h2>
+        <a href="/" class="btn btn-sm btn-outline-arcade btn-return-lobby" data-game="snake">返回大厅</a>
+    </div>
+
+    <div class="game-layout">
+        <div class="row justify-content-center align-items-start g-4">
+            <div class="col-auto text-center">
+                <div class="canvas-container">
+                    <canvas id="snakeCanvas" width="500" height="600"></canvas>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="game-hint-panel">
+                    <h6>操作说明</h6>
+                    <ul>
+                        <li><kbd>↑</kbd> 向上</li>
+                        <li><kbd>↓</kbd> 向下</li>
+                        <li><kbd>←</kbd> 向左</li>
+                        <li><kbd>→</kbd> 向右</li>
+                        <li>不能直接反向掉头</li>
+                    </ul>
+                    <p class="hint-goal">目标：吃红色苹果变长得分，撞墙或咬到自己身体则游戏结束。分数越高速度越快。</p>
+                    <div class="hint-record">最高纪录：{{ fmt_score(records.snake.best_score) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const BEST_SCORE = {{ records.snake.best_score | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/snake.js') }}"></script>
+<script src="{{ url_for('static', filename='js/arcade_leave.js') }}"></script>
+{% endblock %}

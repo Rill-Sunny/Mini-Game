@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="game-page-header d-flex justify-content-between align-items-center px-2">
+        <h2 class="fw-bold m-0">俄罗斯方块</h2>
+        <a href="/" class="btn btn-sm btn-outline-arcade btn-return-lobby" data-game="tetris">返回大厅</a>
+    </div>
+
+    <div class="game-layout">
+        <div class="row justify-content-center align-items-start g-4">
+            <div class="col-auto text-center">
+                <div class="canvas-container">
+                    <canvas id="tetrisCanvas" width="560" height="660"></canvas>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="game-hint-panel">
+                    <h6>操作说明</h6>
+                    <ul>
+                        <li><kbd>←</kbd> <kbd>→</kbd> 左右移动</li>
+                        <li><kbd>↓</kbd> 加速下落</li>
+                        <li><kbd>↑</kbd> 顺时针旋转</li>
+                        <li><kbd>Z</kbd> 逆时针旋转</li>
+                        <li>填满一行即消除并得分</li>
+                    </ul>
+                    <p class="hint-goal">目标：堆叠方块消行得分，方块触顶无法放置时游戏结束。每消一行 +100 分。</p>
+                    <div class="hint-record">最高纪录：{{ fmt_score(records.tetris.best_score) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const BEST_SCORE = {{ records.tetris.best_score | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/tetris.js') }}"></script>
+<script src="{{ url_for('static', filename='js/arcade_leave.js') }}"></script>
+{% endblock %}

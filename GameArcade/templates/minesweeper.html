@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="game-page-header d-flex justify-content-between align-items-center px-2">
+        <h2 class="fw-bold m-0">逻辑扫雷</h2>
+        <a href="/" class="btn btn-sm btn-outline-arcade btn-return-lobby" data-game="minesweeper">返回大厅</a>
+    </div>
+
+    <div class="game-layout">
+        <div class="row justify-content-center align-items-start g-4">
+            <div class="col-auto text-center">
+                <div class="canvas-container">
+                    <canvas id="minesweeperCanvas" width="520" height="640"></canvas>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="game-hint-panel">
+                    <h6>操作说明</h6>
+                    <ul>
+                        <li>左键点击翻开格子</li>
+                        <li>右键插旗 / 取消旗标</li>
+                        <li>数字表示周围 8 格地雷数</li>
+                        <li>空白格会自动展开相邻区域</li>
+                    </ul>
+                    <p class="hint-goal">目标：翻开所有非雷格子即获胜；点到地雷则失败。本局共 10 颗雷。</p>
+                    <div class="hint-record">最快纪录：{{ fmt_time(records.minesweeper.best_time) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const BEST_TIME_SEC = {{ records.minesweeper.best_time | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/minesweeper.js') }}"></script>
+<script src="{{ url_for('static', filename='js/arcade_leave.js') }}"></script>
+{% endblock %}
